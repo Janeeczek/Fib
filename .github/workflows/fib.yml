@@ -40,7 +40,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: janeeczek/fib:latest
+          images: janeeczek/fib
 
       - name: Build and push Docker image
         id: docker_build
