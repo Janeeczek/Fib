@@ -2,9 +2,9 @@ name: Fibo app
 
 on:
   workflow_dispatch:
-#  push:
-#    branches:
-#      - 'main'
+  push:
+    branches:
+      - 'main'
 
 jobs:
   build-push-images-with-cache:
