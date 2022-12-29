@@ -56,10 +56,9 @@ jobs:
         with:
           context: .
           platforms: linux/amd64
-          push: true
-          tags: ghcr.io/${{ steps.meta.outputs.tags }}
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,mode=max,dest=/tmp/.buildx-cache-new
+          push: ${{ github.ref_type == 'tag' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
 
       - name: Move cache
         run: |
