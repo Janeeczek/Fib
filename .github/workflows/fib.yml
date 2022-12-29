@@ -10,6 +10,9 @@ jobs:
   build-push-images-with-cache:
     name: Build and push Docker image to Docker Hub
     runs-on: ubuntu-20.04
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - name: Check out the repo
@@ -45,12 +48,13 @@ jobs:
             type=ref,event=branch
             type=ref,event=pr
             type=semver,pattern={{version}}
-          images: janeeczek/fib
+          images: Janeeczek/fib
 
       - name: Build and push Docker image
         id: docker_build
         uses: docker/build-push-action@v3
         with:
+          context: .
           platforms: linux/amd64
           push: true
           tags: ghcr.io/${{ steps.meta.outputs.tags }}
