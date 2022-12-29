@@ -64,5 +64,5 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=registry,ref=janeeczek/Fib:buildcache
-          cache-to: type=registry,ref=janeeczek/Fib:buildcache,mode=max
+          cache-from: type=registry,ref=janeeczek/fib:buildcache
+          cache-to: type=registry,ref=janeeczek/fib:buildcache,mode=max
