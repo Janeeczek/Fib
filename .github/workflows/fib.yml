@@ -33,13 +33,13 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }} #uzytkownik
           password: ${{ secrets.DOCKERHUB_TOKEN }}  #token
 
-      - name: Cache Docker layers # cachowanie
-        uses: actions/cache@v2
-        with:
-          path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-multi-buildx-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-multi-buildx
+#       - name: Cache Docker layers # cachowanie
+#         uses: actions/cache@v2
+#         with:
+#           path: /tmp/.buildx-cache
+#           key: ${{ runner.os }}-multi-buildx-${{ github.sha }}
+#           restore-keys: |
+#             ${{ runner.os }}-multi-buildx
       
       - name: Extract metadata (tags, labels) for Docker # potrzebne do metadata, ustalilem zeby tagowalo po branchu oraz wersji
         id: meta 
@@ -61,5 +61,5 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }} # przypisanie tagow
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=registry,ref=janeeczek/fib:buildcache # cache z dockerhubu
-          cache-to: type=registry,ref=janeeczek/fib:buildcache,mode=max # zapis cashe do dockerhubu
+#           cache-from: type=registry,ref=janeeczek/fib:buildcache # cache z dockerhubu
+#           cache-to: type=registry,ref=janeeczek/fib:buildcache,mode=max # zapis cashe do dockerhubu
