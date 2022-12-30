@@ -10,10 +10,6 @@ jobs:
   build-push-images-with-cache:
     name: Build and push Docker image to Docker Hub
     runs-on: ubuntu-20.04 # wybieram system 
-    permissions:
-      contents: read
-      packages: write
-
     steps:
       - name: Check out the repo # domyslny action
         uses: actions/checkout@v3
@@ -61,7 +57,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          platforms: linux/amd64,linux/arm64,linux/arm/v8 # deklaracja platform
+          platforms: linux/amd64,linux/arm64 # deklaracja platform
           push: true
           tags: ${{ steps.meta.outputs.tags }} # przypisanie tagow
           labels: ${{ steps.meta.outputs.labels }}
